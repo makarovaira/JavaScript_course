@@ -1,0 +1,14 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+export default class LocalStorage {
+    get = async (tableName) => {
+        const data = await AsyncStorage.getItem(tableName);
+        return data ? JSON.parse(data) : null;
+    };
+    set = async (tableName, data) => {
+        return AsyncStorage.setItem(tableName, JSON.stringify(data));
+    };
+    removeAll = async (tableName) => {
+        return AsyncStorage.removeItem(tableName);
+    };
+}
